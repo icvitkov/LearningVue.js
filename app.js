@@ -1,22 +1,12 @@
-Vue.component('greeting', {
-  template: '<p>Hey {{name}}, I am a re-usable component. <button @click="changeName"> Change name</button></p>',
-  data: function(){
-    return {
-      name: 'Yoshi'
-    }
+new Vue({
+  el: '#vue-app',
+  data: {
+    output: 'Your fav food'
   },
   methods: {
-    changeName: function(){
-      this.name = 'Mario';
+    readRefs: function(){
+      console.log(this.$refs.test.innerText);
+    this.output = this.$refs.input.value;
     }
   }
-});
-
-var one = new Vue({
-  el: "#vue-app-one",
-});
-
-var two = new Vue({
-  el: "#vue-app-two",
- 
 });
