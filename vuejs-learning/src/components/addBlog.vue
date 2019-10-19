@@ -7,25 +7,30 @@
       <label>Blog Content:</label>
       <textarea v-model.lazy="blog.content"></textarea>
       <div id="checkboxes">
-          <label for="">Ninjas</label>
-          <input type="checkbox" value="ninjas" v-model="blog.categories">
-          <label for="">Wizards</label>
-          <input type="checkbox" value="wizards" v-model="blog.categories">
-          <label for="">Mario</label>
-          <input type="checkbox" value="mario" v-model="blog.categories">
-          <label for="">Cheese</label>
-          <input type="checkbox" value="cheese" v-model="blog.categories">
+        <label for>Ninjas</label>
+        <input type="checkbox" value="ninjas" v-model="blog.categories" />
+        <label for>Wizards</label>
+        <input type="checkbox" value="wizards" v-model="blog.categories" />
+        <label for>Mario</label>
+        <input type="checkbox" value="mario" v-model="blog.categories" />
+        <label for>Cheese</label>
+        <input type="checkbox" value="cheese" v-model="blog.categories" />
       </div>
+      <label for>Author:</label>
+      <select name id v-model="blog.author">
+        <option v-for="(author, index) in authors" :key="index">{{author}}</option>
+      </select>
     </form>
     <div id="preview">
       <h3>Preview blog</h3>
       <p>Blog title: {{blog.title}}</p>
-      <p>Blog content: </p>
+      <p>Blog content:</p>
       <p>{{blog.content}}</p>
       <p>Blog Categories:</p>
       <ul>
-          <li v-for="(category, index) in blog.categories" :key="index">{{category }}</li>
+        <li v-for="(category, index) in blog.categories" :key="index">{{category }}</li>
       </ul>
+      <p>Author: {{blog.author}}</p>
     </div>
   </div>
 </template>
@@ -38,8 +43,10 @@ export default {
       blog: {
         title: "",
         content: "",
-        categories: []
-      }
+        categories: [],
+        author: ""
+      },
+      authors: ["The Net Ninja", "Angela Merkel", "Ivo Sanader"]
     };
   },
   methods: {}
@@ -74,10 +81,13 @@ h3 {
 }
 
 #checkboxes input {
-    display: inline-block;
-    margin-right: 10px;
+  display: inline-block;
+  margin-right: 10px;
 }
 #checkboxes label {
-    display: inline-block;
+  display: inline-block;
+}
+li {
+  display: inline;
 }
 </style>
